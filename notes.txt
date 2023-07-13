@@ -1,0 +1,90 @@
+----> for write hello world using javascript
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const heading = document.createElement("h1");
+      heading.innerHTML = "Hello world from javascript!!";
+      const root = document.getElementById("root");
+      root.appendChild(heading);
+    </script>
+  </body>
+</html>
+
+
+----> for write hello world using React
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
+    <script>
+      const heading = React.createElement("h1", {}, "Hello world from React");//this is a object //in this {} this is attribute where we can add id class
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(heading);
+    </script>
+  </body>
+</html>
+
+
+----> If we want to add nested element
+
+const heading = React.createElement(
+  "div",
+  { id: "parent" },
+  React.createElement(
+    "div",
+    { id: "child" },
+    React.createElement("h1", {}, "I am an H1 Tag")
+  )
+);
+console.log(heading);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
+
+
+
+
+----> If we want to add nested element + 2 child
+
+const heading = React.createElement(
+  "div",
+  { id: "parent" },
+  React.createElement("div", { id: "child" }, [
+    React.createElement("h1", {}, "I am an H1 Tag"),
+    React.createElement("h2", {}, "I am an H2 Tag"), //in this we can make an array
+  ])
+);
+console.log(heading);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
+
+Q) what is crossorigin?? --> Cross-Origin Resource Sharing (CORS) is an HTTP-header 
+based mechanism that allows a server to indicate any origins (domain, scheme, or port) 
+other than its own from which a browser should permit loading resources
+
+Q) what is ReactElement --> its just a object
+Q) whats do render --> its just put code in your root element
